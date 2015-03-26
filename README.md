@@ -14,7 +14,7 @@ Looking for more information on how cereal works and its documentation?  Visit [
 
 Installation and use of of cereal is fully documented on the [main web page](http://USCiLab.github.com/cereal), but this is a quick and dirty version:
 
-* Download cereal and place the headers somewhere your code can see them
+* Just clone the repo into your libraries folder
 * Write serialization functions for your custom types or use the built in support for the standard library cereal provides
 * Use the serialization archives to load and save data
 
