@@ -1,0 +1,2 @@
+#Set the precompiler define :D
+add_definitions(-DUSE_CEREAL)
