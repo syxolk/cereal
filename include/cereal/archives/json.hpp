@@ -491,11 +491,15 @@ namespace cereal
             const auto len = std::strlen( searchName );
             size_t index = 0;
             for( auto it = itsMemberItBegin; it != itsMemberItEnd; ++it, ++index )
-              if( std::strncmp( searchName, it->name.GetString(), len ) == 0 )
+            {
+              const auto currentName = it->name.GetString();
+              if( ( std::strncmp( searchName, currentName, len ) == 0 ) &&
+                  ( std::strlen( currentName ) == len ) )
               {
                 itsIndex = index;
                 return;
               }
+            }
 
             throw Exception("JSON Parsing failed - provided NVP not found");
           }
@@ -580,7 +584,7 @@ namespace cereal
       {
         search();
 
-        val = itsIteratorStack.back().value().GetInt();
+        val = static_cast<T>( itsIteratorStack.back().value().GetInt() );
         ++itsIteratorStack.back();
       }
 
@@ -592,7 +596,7 @@ namespace cereal
       {
         search();
 
-        val = itsIteratorStack.back().value().GetUint();
+        val = static_cast<T>( itsIteratorStack.back().value().GetUint() );
         ++itsIteratorStack.back();
       }
 
